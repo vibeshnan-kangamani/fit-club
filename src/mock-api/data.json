@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "email": "sreeja1@gmail.com",
+      "password": "$2a$10$3SPrmTJTLqXYnsw8AoeFE.Az9dtr09Ar2DWG1squ7.D3Gxo2LZLs2",
+      "username": "sreeja",
+      "type": "user",
+      "lastname": "1",
+      "id": 1
+    },
+    {
+      "email": "sreeja2@gmail.com",
+      "password": "$2a$10$EeQlEWAa27kpTvVThpkQye1lRXD6KmBSeW6TEMeZCRAD8NnO3ckmu",
+      "username": "sreeja",
+      "type": "admin",
+      "lastname": "2",
+      "id": 2
+    }
+  ]
+}
