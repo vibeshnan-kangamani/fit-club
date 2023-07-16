@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(private loginService: LoginService,
+    private route: Router) {
+      this.form = new FormGroup({
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+      });
+  }
 
   ngOnInit() {
+  }
+
+
+  submit(){
+    console.log(this.form.value);
+    if(this.form.valid)
+     this.loginService.login(this.form.value).subscribe((response:any)=>{
+        sessionStorage.setItem("username",response.user.username);
+        sessionStorage.setItem("usertype",response.user.type);
+        sessionStorage.setItem("token",response.accessToken);
+        sessionStorage.setItem("email",response.user.email);
+        this.loginService.loggedUser.userName = response.user.username;
+        this.loginService.loggedUser.userType = response.user.type;
+        this.loginService.loggedUser.AccessToke =response.accessToken;
+        this.route.navigate(['business']);
+      }
+     );
   }
 
 }
