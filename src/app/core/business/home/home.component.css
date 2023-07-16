@@ -1,0 +1,4 @@
+.programs:hover{
+  box-shadow: rgb(170, 170, 170) 0px 5px 15px;
+  cursor: pointer;
+}

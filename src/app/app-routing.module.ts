@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: 'full'},
   {path:"login", loadChildren:() => import('./core/login/login.module').then(m => m.LoginModule)},
-  {path:"business", loadChildren:() => import('./core/business/business.module').then(m => m.BusinessModule)},
+  {path:"business", loadChildren:() => import('./core/business/business.module').then(m => m.BusinessModule)}
 ];
 
 @NgModule({
