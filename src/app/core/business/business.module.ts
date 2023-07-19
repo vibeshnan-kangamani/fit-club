@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RegistrationComponent } from './registration/registration.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: "", component: BusinessComponent,
@@ -19,8 +21,8 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: "register",
-        component: RegistrationComponent
+        path: "register-form",
+        component: RegistrationFormComponent
       },
       {
         path: "register/:id",
@@ -38,8 +40,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
-  declarations: [BusinessComponent]
+  declarations: [BusinessComponent,RegistrationFormComponent,RegistrationComponent]
 })
 export class BusinessModule { }
