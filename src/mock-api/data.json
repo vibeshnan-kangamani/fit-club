@@ -16,5 +16,42 @@
       "lastname": "2",
       "id": 2
     }
+  ],
+  "club-registration": [
+    {
+      "id": 1,
+      "name": "imel",
+      "Address": "ddd",
+      "email": "imel@gmail.com",
+      "activity": "Super Hot"
+    },
+    {
+      "name": "vibi",
+      "address": "dddd",
+      "email": "vibeshnan2319@gmail.com",
+      "activity": "Super Flexible",
+      "id": 2
+    },
+    {
+      "name": "KK",
+      "address": "ghfhfhf",
+      "email": "vibi@hjh",
+      "activity": "Super Flexible",
+      "id": 3
+    },
+    {
+      "name": "santhosh",
+      "address": "sssssss",
+      "email": "vibeshnan2319@gmail.com",
+      "activity": "Super Flexible",
+      "id": 4
+    },
+    {
+      "name": "bharu",
+      "address": "sssssssss",
+      "email": "cf@cc.com",
+      "activity": "GYM",
+      "id": 5
+    }
   ]
 }

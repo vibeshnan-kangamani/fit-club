@@ -1,5 +1,4 @@
-<div *ngIf="loginService.loggedUser.userType == 'user'">
-  <div class="container">
+<div class="container">
   <div>
     <h1>Fit Club Registration Form</h1>
     <form (ngSubmit)="onSubmit(registrationForm.value)" #registrationForm="ngForm">
@@ -41,14 +40,47 @@
       </div>
 
       <button type="submit" class="btn btn-success" [disabled]="!registrationForm.form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="newRegister(); registrationForm.reset()">Clear</button>
+      <button type="button" class="btn btn-default" (click)="registrationForm.reset()">Clear</button>
      <!-- - -->
     </form>
   </div>
 </div>
+
+
+<div class="table-style" *ngIf="loginService.loggedUser.userType == 'admin'">
+  <div style="width: 80%;">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    
+    <!-- Name Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+    
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="activity">
+      <th mat-header-cell *matHeaderCellDef> Activity </th>
+      <td mat-cell *matCellDef="let element"> {{element.activity}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>  
 </div>
-
-
-<ng-container *ngIf="loginService.loggedUser.userType == 'admin'">
-  <app-registration></app-registration>
-</ng-container>
+</div>

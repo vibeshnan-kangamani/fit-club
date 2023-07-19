@@ -1,28 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from '../../../login/login.service';
-
-export class Hero {
-
-  public id: number;
-    public name: string;
-    public address: string;
-    public email: string;
-    public activity?: string
-  constructor(
-    public Id?: number,
-    public Name?: string,
-    public Address?: string,
-    public Email?: string,
-    public Activity?: string
-  ) {
-    this.id = Id;
-    this.name = Name;
-    this.address = Address;
-    this.email = Email;
-    this.activity = Activity;
-   }
-
-}
+import { Registration } from './register.model';
+import { RegistrationService } from '../registration.service';
+import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-registration-form',
@@ -31,22 +13,40 @@ export class Hero {
 })
 export class RegistrationFormComponent implements OnInit {
 
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
+  @ViewChild("registrationForm") register: NgForm;
+  displayedColumns: string[] = ['name', 'address', 'email', 'activity'];
+  dataSource: any = new MatTableDataSource([]);
 
-  model: Hero = new Hero();
+  powers = ['GYM', 'Yoga',
+            'Aerobics', 'Crossfit'];
+
+  model: Registration = new Registration();
 
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService,
+    private registrationService: RegistrationService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getRegistration();
   }
 
 
-  onSubmit(data: any) {  }
+  onSubmit(data: any) {
+    console.log(data);
+    this.registrationService.addRegistration(data).subscribe(res =>{
+      console.log(res);
+      this.snackBar.open("Registered Successfully","Ok");
+      this.getRegistration();
+      this.register.reset();
+    })
+  }
 
-  newRegister(){
-
+  getRegistration(){
+    this.registrationService.getRegisteredUsers().subscribe((res: Registration[])=>{
+      console.log(res); 
+      this.dataSource = new MatTableDataSource<Registration>(res);     
+    })
   }
 
 }

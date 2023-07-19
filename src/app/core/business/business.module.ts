@@ -8,6 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegistrationFormComponent } from './registration/registration-form/registration-form.component';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   { path: "", component: BusinessComponent,
@@ -41,7 +42,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   declarations: [BusinessComponent,RegistrationFormComponent,RegistrationComponent]
 })
